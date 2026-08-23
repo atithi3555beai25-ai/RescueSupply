@@ -5,7 +5,9 @@ function RestaurantCard({ restaurant }) {
     return (
         <div className="card">
 
-            <div className="food-icon">🍛</div>
+            <div className="food-icon">
+                <img src={restaurant.image} alt={restaurant.food} />
+            </div>
 
             <h3>{restaurant.name}</h3>
 

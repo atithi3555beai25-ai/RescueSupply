@@ -20,23 +20,34 @@ function Restaurants() {
                 Find surplus food available near you.
             </p>
 
-            <input
-                className="search"
-                type="text"
-                placeholder="Search restaurant or city..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-            />
+            {/* Search Bar */}
+            <div className="search-box">
 
+                <input
+                    type="text"
+                    placeholder="Search restaurant or city..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+
+                <button className="search-btn">
+                    🔍 Search
+                </button>
+
+            </div>
+
+            {/* Restaurant Cards */}
             <div className="restaurant-grid">
 
                 {filteredRestaurants.length > 0 ? (
 
                     filteredRestaurants.map((restaurant) => (
+
                         <RestaurantCard
                             key={restaurant.id}
                             restaurant={restaurant}
                         />
+
                     ))
 
                 ) : (
