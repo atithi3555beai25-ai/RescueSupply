@@ -32,8 +32,73 @@ body {
 }
 
 
-.navbar h2 {
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 16px;
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(38, 115, 77, 0.18);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 4px 20px rgba(38, 115, 77, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Emoji stays ORIGINAL */
+.brand-emoji {
+    font-size: 25px;
+    line-height: 1;
+    color: gainsboro;
+}
+
+/* Only text gets styling */
+.brand-text {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+
     color: #26734d;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+/* Premium hover */
+.brand:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 28px rgba(38, 115, 77, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.brand:hover .brand-text {
+    color: #1b5e3b;
+
+    text-shadow:
+        0 0 12px rgba(38, 115, 77, 0.25);
+}
+
+.brand:hover .brand-emoji {
+    transform: scale(1.08);
+}
+
+.brand-emoji {
+    transition: transform 0.3s ease;
 }
 
 
