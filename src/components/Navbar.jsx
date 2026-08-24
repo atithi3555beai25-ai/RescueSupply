@@ -14,6 +14,7 @@ function Navbar() {
                 <Link to="/">Home</Link>
                 <Link to="/restaurants">Donations</Link>
                 <Link to="/add-donation">Donate Food</Link>
+                <Link to="/login">Login</Link>
             </div>
         </nav>
     );
