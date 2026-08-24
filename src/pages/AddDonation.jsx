@@ -66,6 +66,12 @@ function AddDonation() {
                     background-size: cover, cover, auto, auto;
                     background-position: center, center 42%;
                     background-blend-mode: normal, normal, multiply, normal;
+                    animation: donation-page-in 0.6s ease both;
+                }
+
+                @keyframes donation-page-in {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
                 }
 
                 .donation-page::before,
@@ -104,6 +110,30 @@ function AddDonation() {
                     text-align: center;
                 }
 
+                .donation-page .eyebrow {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 14px;
+                    padding: 7px 13px;
+                    border: 1px solid rgba(38, 115, 77, 0.18);
+                    border-radius: 999px;
+                    background: rgba(255, 255, 255, 0.7);
+                    color: #26734d;
+                    font-size: 12px;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                }
+
+                .donation-page .eyebrow::before {
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 50%;
+                    background: #c48b3d;
+                    content: "";
+                }
+
                 .donation-page h1 {
                     font-size: clamp(32px, 5vw, 48px);
                     line-height: 1.15;
@@ -131,6 +161,24 @@ function AddDonation() {
                     border-radius: 16px;
                     box-shadow: 0 16px 36px rgba(38, 80, 55, 0.18);
                     backdrop-filter: blur(5px);
+                }
+
+                .donation-page .form-intro {
+                    grid-column: 1 / -1;
+                    margin-bottom: 4px;
+                    padding-bottom: 16px;
+                    border-bottom: 1px solid #e4eee6;
+                }
+
+                .donation-page .form-intro h2 {
+                    margin-bottom: 4px;
+                    color: #26352b;
+                    font-size: 21px;
+                }
+
+                .donation-page .form-intro p {
+                    color: #68736c;
+                    font-size: 14px;
                 }
 
                 .donation-page .donation-form label {
@@ -194,6 +242,7 @@ function AddDonation() {
             `}</style>
 
             <header className="page-header">
+                <span className="eyebrow">Make a difference</span>
                 <h1>Donate Food</h1>
 
                 <p className="subtitle">
@@ -203,6 +252,11 @@ function AddDonation() {
             </header>
 
             <form className="donation-form" onSubmit={handleSubmit}>
+
+                <div className="form-intro">
+                    <h2>Donation details</h2>
+                    <p>Tell us about the food you would like to share.</p>
+                </div>
 
                 <label htmlFor="donor-name">Donor Name</label>
 
