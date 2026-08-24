@@ -44,14 +44,61 @@ function AddDonation() {
         <main className="page donation-page">
             <style>{`
                 .donation-page {
+                    position: relative;
+                    isolation: isolate;
+                    overflow: hidden;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    min-height: 80vh;
                     padding: clamp(40px, 8vw, 80px) 20px;
-                    background: linear-gradient(135deg, #f7faf7 0%, #e9f7ed 100%);
+                    background:
+                        linear-gradient(120deg, rgba(247, 250, 247, 0.84), rgba(233, 247, 237, 0.7)),
+                        url("https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=2200&q=85"),
+                        repeating-linear-gradient(
+                            135deg,
+                            rgba(38, 115, 77, 0.045) 0,
+                            rgba(38, 115, 77, 0.045) 1px,
+                            transparent 1px,
+                            transparent 28px
+                        ),
+                        linear-gradient(135deg, #f7faf7 0%, #dff1e5 100%);
+                    background-size: cover, cover, auto, auto;
+                    background-position: center, center 42%;
+                    background-blend-mode: normal, normal, multiply, normal;
+                }
+
+                .donation-page::before,
+                .donation-page::after {
+                    position: absolute;
+                    z-index: -1;
+                    content: "";
+                    pointer-events: none;
+                }
+
+                .donation-page::before {
+                    top: -18%;
+                    right: -8%;
+                    width: 52%;
+                    height: 70%;
+                    border: 1px solid rgba(38, 115, 77, 0.12);
+                    border-radius: 45% 55% 60% 40%;
+                    transform: rotate(18deg);
+                }
+
+                .donation-page::after {
+                    bottom: -24%;
+                    left: -12%;
+                    width: 48%;
+                    height: 62%;
+                    border: 1px solid rgba(196, 139, 61, 0.16);
+                    border-radius: 60% 40% 45% 55%;
+                    transform: rotate(-16deg);
                 }
 
                 .donation-page .page-header {
+                    position: relative;
+                    z-index: 1;
                     width: 100%;
                     max-width: 680px;
                     text-align: center;
@@ -61,6 +108,7 @@ function AddDonation() {
                     font-size: clamp(32px, 5vw, 48px);
                     line-height: 1.15;
                     margin-bottom: 14px;
+                    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.7);
                 }
 
                 .donation-page .subtitle {
@@ -70,6 +118,8 @@ function AddDonation() {
                 }
 
                 .donation-page .donation-form {
+                    position: relative;
+                    z-index: 1;
                     width: 100%;
                     max-width: 720px;
                     display: grid;
@@ -77,9 +127,10 @@ function AddDonation() {
                     gap: 8px 20px;
                     margin: 0;
                     padding: clamp(24px, 5vw, 40px);
-                    border: 1px solid #dcebe0;
+                    border: 1px solid rgba(220, 235, 224, 0.9);
                     border-radius: 16px;
-                    box-shadow: 0 12px 30px rgba(38, 115, 77, 0.12);
+                    box-shadow: 0 16px 36px rgba(38, 80, 55, 0.18);
+                    backdrop-filter: blur(5px);
                 }
 
                 .donation-page .donation-form label {
