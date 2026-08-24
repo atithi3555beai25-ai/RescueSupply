@@ -84,7 +84,6 @@ function Home() {
             <section className="about">
 
                 <div className="about-image">
-                    🍛
                 </div>
 
                 <div className="about-content">
