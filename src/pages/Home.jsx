@@ -126,23 +126,20 @@ function Home() {
                 </div>
 
             </section>
+<section className="cta">
 
+    <h2>Have Extra Food?</h2>
 
-            {/* Call To Action */}
-            <section className="cta">
+    <p>
+        Don't let good food go to waste.
+        Share it with someone who needs it.
+    </p>
 
-                <h2>Have Extra Food?</h2>
+    <Link to="/add-donation" className="cta-btn">
+        Donate Food →
+    </Link>
 
-                <p>
-                    Don't let good food go to waste.
-                    Share it with someone who needs it.
-                </p>
-
-                <Link to="/add-donation" className="cta-btn">
-                    Donate Food →
-                </Link>
-
-            </section>
+</section>
 
         </main>
     );

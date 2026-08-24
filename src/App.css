@@ -154,19 +154,7 @@ body {
 
 
 
-    /* font-size: 180px; */
-    .hero-image {
-    height: 300px;
-    width: 400px;
 
-    background-image: url("https://static.vecteezy.com/system/resources/previews/033/941/233/non_2x/a-plate-of-spaghetti-with-meat-and-vegetables-ai-generated-free-photo.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    border-radius: 15px;
-}
 
 
 /* BUTTONS */
@@ -272,8 +260,8 @@ body {
     margin-bottom: 30px;
 }
 
-
-/* SEARCH */
+/* 
+SEARCH */
 
 /* .search {
     display: block;
@@ -964,16 +952,36 @@ footer {
 
 .cta {
     margin: 50px 7%;
-
     padding: 55px 20px;
 
     text-align: center;
 
-    background-color: #176b3a;
+    background-image: url("https://i.pinimg.com/736x/46/23/3f/46233f969bbfe40b5a8f5fe321e63f37.jpg");
+    background-size: cover;
+    background-position: center;
 
     border-radius: 18px;
-
     color: white;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Slight dark overlay for text readability */
+.cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(16, 37, 27, 0.35);
+
+    z-index: 0;
+}
+
+/* Keep text/buttons above the overlay */
+.cta > * {
+    position: relative;
+    z-index: 1;
 }
 
 .cta h2 {
