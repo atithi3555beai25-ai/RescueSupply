@@ -160,7 +160,6 @@ function AddDonation() {
                     border: 1px solid rgba(220, 235, 224, 0.9);
                     border-radius: 16px;
                     box-shadow: 0 16px 36px rgba(38, 80, 55, 0.18);
-                    backdrop-filter: blur(5px);
                 }
 
                 .donation-page .form-intro {
