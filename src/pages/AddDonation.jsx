@@ -1,141 +1,73 @@
-import { useState } from "react";
-
 function AddDonation() {
-
-    const [form, setForm] = useState({
-        name: "",
-        city: "",
-        meals: "",
-        food: "",
-        address: ""
-    });
-
-    const [message, setMessage] = useState("");
-
-    const handleChange = (e) => {
-
-        const { name, value } = e.target;
-
-        setForm({
-            ...form,
-            [name]: value
-        });
-    };
-
-
-    const handleSubmit = (e) => {
-
-        e.preventDefault();
-
-        const oldDonations =
-            JSON.parse(localStorage.getItem("donations")) || [];
-
-        oldDonations.push(form);
-
-        localStorage.setItem(
-            "donations",
-            JSON.stringify(oldDonations)
-        );
-
-        setMessage("Food donation added successfully! 🎉");
-
-        setForm({
-            name: "",
-            city: "",
-            meals: "",
-            food: "",
-            address: ""
-        });
-    };
-
-
     return (
-
         <main className="page">
 
-            <h1>Donate Surplus Food</h1>
+            <h1>Donate Food</h1>
 
             <p className="subtitle">
-                Restaurants can share their available meals here.
+                Share your surplus food and help make sure good meals reach
+                people who need them.
             </p>
 
-            <form
-                className="donation-form"
-                onSubmit={handleSubmit}
-            >
+            <form className="donation-form">
 
-                <label>Restaurant Name</label>
+                <label htmlFor="donor-name">Donor Name</label>
 
                 <input
                     type="text"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Enter restaurant name"
+                    id="donor-name"
+                    name="donorName"
+                    placeholder="Enter your name"
                     required
                 />
 
-
-                <label>City</label>
+                <label htmlFor="food-name">Food Name</label>
 
                 <input
                     type="text"
-                    name="city"
-                    value={form.city}
-                    onChange={handleChange}
-                    placeholder="Enter city"
+                    id="food-name"
+                    name="foodName"
+                    placeholder="Example: Vegetable rice"
                     required
                 />
 
+                <label htmlFor="food-category">Food Category</label>
 
-                <label>Number of Meals</label>
+                <select id="food-category" name="foodCategory" defaultValue="" required>
+                    <option value="" disabled>
+                        Select a category
+                    </option>
+                    <option value="prepared-meals">Prepared meals</option>
+                    <option value="bakery">Bakery</option>
+                    <option value="produce">Fresh produce</option>
+                    <option value="packaged-food">Packaged food</option>
+                </select>
 
-                <input
-                    type="number"
-                    name="meals"
-                    value={form.meals}
-                    onChange={handleChange}
-                    placeholder="Example: 50"
-                    required
-                />
-
-
-                <label>Food Available</label>
+                <label htmlFor="quantity">Quantity</label>
 
                 <input
                     type="text"
-                    name="food"
-                    value={form.food}
-                    onChange={handleChange}
-                    placeholder="Example: Dal, Rice and Roti"
+                    id="quantity"
+                    name="quantity"
+                    placeholder="Example: 20 servings"
                     required
                 />
 
-
-                <label>Address</label>
+                <label htmlFor="pickup-location">Pickup Location</label>
 
                 <input
                     type="text"
-                    name="address"
-                    value={form.address}
-                    onChange={handleChange}
-                    placeholder="Restaurant address"
+                    id="pickup-location"
+                    name="pickupLocation"
+                    placeholder="Enter the pickup address"
                     required
                 />
 
-
-                <button type="submit">
-                    Add Donation
+                <button type="button">
+                    Donate Food
                 </button>
 
             </form>
-
-
-            {message && (
-                <p className="success">
-                    {message}
-                </p>
-            )}
 
         </main>
     );
