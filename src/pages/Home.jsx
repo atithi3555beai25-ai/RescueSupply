@@ -25,11 +25,11 @@ function Home() {
 
                     <div className="hero-buttons">
                         <Link to="/restaurants" className="primary-btn">
-                            Find Food →
+                            Explore Nearby Food →
                         </Link>
 
                         <Link to="/add-donation" className="secondary-btn">
-                            Donate Food
+                            Donate Surplus Food →
                         </Link>
                     </div>
 
@@ -53,31 +53,31 @@ function Home() {
             {/* Statistics */}
             <section className="stats">
 
-                <div className="stat">
-                    <span>🍽️</span>
-                    <h2>120+</h2>
-                    <p>Meals Shared</p>
-                </div>
+    <button className="stat">
+        <span>🍽️</span>
+        <h2>120+</h2>
+        <p>Meals Shared</p>
+    </button>
 
-                <div className="stat">
-                    <span>🏪</span>
-                    <h2>25+</h2>
-                    <p>Food Partners</p>
-                </div>
+    <button className="stat">
+        <span>🏪</span>
+        <h2>25+</h2>
+        <p>Food Partners</p>
+    </button>
 
-                <div className="stat">
-                    <span>♻️</span>
-                    <h2>80kg</h2>
-                    <p>Food Saved</p>
-                </div>
+    <button className="stat">
+        <span>♻️</span>
+        <h2>80kg</h2>
+        <p>Food Saved</p>
+    </button>
 
-                <div className="stat">
-                    <span>❤️</span>
-                    <h2>50+</h2>
-                    <p>Happy People</p>
-                </div>
+    <button className="stat">
+        <span>❤️</span>
+        <h2>50+</h2>
+        <p>Happy People</p>
+    </button>
 
-            </section>
+</section>
 
             
             {/* About Section */}

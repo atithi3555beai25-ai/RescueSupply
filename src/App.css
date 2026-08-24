@@ -1111,15 +1111,7 @@ footer {
         font-size: 90px;
     }
 
-    .floating-card {
-        right: -15px;
-    }
 
-    .stats {
-        grid-template-columns: 1fr 1fr;
-
-        padding: 25px 5%;
-    }
 
     .about {
         flex-direction: column;
@@ -1376,4 +1368,64 @@ footer {
     background-repeat: no-repeat;
 
     border-radius: 20px;
+}
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+
+    padding: 50px 7%;
+}
+
+.stat {
+    width: 220px;
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: #ffffff;
+    border: 1px solid #d9e2dc;
+    border-radius: 18px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    font-family: inherit;
+}
+
+.stat:hover {
+    transform: translateY(-8px);
+    border-color: #b8c9c0;
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Clicked / focused card */
+.stat:focus {
+    outline: none;
+
+    background: #f2f8ff;
+    border: 1px solid #8bbce8;
+
+    box-shadow: 0 12px 30px rgba(74, 144, 226, 0.18);
+
+    transform: translateY(-5px);
+}
+
+.stat span {
+    font-size: 32px;
+}
+
+.stat h2 {
+    margin: 10px 0 5px;
+    font-size: 30px;
+    color: #26352b;
+}
+
+.stat p {
+    margin: 0;
+    color: #66736b;
 }
