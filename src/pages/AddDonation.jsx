@@ -1,4 +1,45 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function AddDonation() {
+    const navigate = useNavigate();
+    const [form, setForm] = useState({
+        donorName: "",
+        foodName: "",
+        foodCategory: "",
+        quantity: "",
+        pickupLocation: ""
+    });
+
+    const handleChange = (event) => {
+        setForm({
+            ...form,
+            [event.target.name]: event.target.value
+        });
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const savedDonations = JSON.parse(
+            localStorage.getItem("donations") || "[]"
+        );
+
+        savedDonations.push({
+            id: Date.now(),
+            name: form.donorName,
+            city: form.pickupLocation,
+            meals: form.quantity,
+            food: form.foodName,
+            description: `${form.foodCategory} donation available for pickup.`,
+            address: form.pickupLocation,
+            image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+        });
+
+        localStorage.setItem("donations", JSON.stringify(savedDonations));
+        navigate("/restaurants");
+    };
+
     return (
         <main className="page donation-page">
             <style>{`
@@ -17,7 +58,6 @@ function AddDonation() {
                 }
 
                 .donation-page h1 {
-                    color: #1d5c3d;
                     font-size: clamp(32px, 5vw, 48px);
                     line-height: 1.15;
                     margin-bottom: 14px;
@@ -26,7 +66,6 @@ function AddDonation() {
                 .donation-page .subtitle {
                     max-width: 560px;
                     margin: 0 auto 32px;
-                    color: #53665a;
                     font-size: 17px;
                 }
 
@@ -45,7 +84,8 @@ function AddDonation() {
 
                 .donation-page .donation-form label {
                     margin-top: 8px;
-                    color: #26352b;
+                    margin-bottom: 5px;
+                    color: #68736c;
                     font-size: 14px;
                 }
 
@@ -97,7 +137,7 @@ function AddDonation() {
                     .donation-page .donation-form label:nth-of-type(5),
                     .donation-page .donation-form input:nth-of-type(3),
                     .donation-page .donation-form button {
-                        grid-column: auto;
+                        grid-column: 1 / -1;
                     }
                 }
             `}</style>
@@ -111,7 +151,7 @@ function AddDonation() {
                 </p>
             </header>
 
-            <form className="donation-form">
+            <form className="donation-form" onSubmit={handleSubmit}>
 
                 <label htmlFor="donor-name">Donor Name</label>
 
@@ -120,6 +160,8 @@ function AddDonation() {
                     id="donor-name"
                     name="donorName"
                     placeholder="Enter your name"
+                    value={form.donorName}
+                    onChange={handleChange}
                     required
                 />
 
@@ -130,12 +172,20 @@ function AddDonation() {
                     id="food-name"
                     name="foodName"
                     placeholder="Example: Vegetable rice"
+                    value={form.foodName}
+                    onChange={handleChange}
                     required
                 />
 
                 <label htmlFor="food-category">Food Category</label>
 
-                <select id="food-category" name="foodCategory" defaultValue="" required>
+                <select
+                    id="food-category"
+                    name="foodCategory"
+                    value={form.foodCategory}
+                    onChange={handleChange}
+                    required
+                >
                     <option value="" disabled>
                         Select a category
                     </option>
@@ -152,6 +202,8 @@ function AddDonation() {
                     id="quantity"
                     name="quantity"
                     placeholder="Example: 20 servings"
+                    value={form.quantity}
+                    onChange={handleChange}
                     required
                 />
 
@@ -162,10 +214,12 @@ function AddDonation() {
                     id="pickup-location"
                     name="pickupLocation"
                     placeholder="Enter the pickup address"
+                    value={form.pickupLocation}
+                    onChange={handleChange}
                     required
                 />
 
-                <button type="button">
+                <button type="submit">
                     Donate Food
                 </button>
 

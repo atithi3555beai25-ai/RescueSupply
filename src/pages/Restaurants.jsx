@@ -5,8 +5,12 @@ import restaurants from "../data/Restaurant";
 function Restaurants() {
 
     const [search, setSearch] = useState("");
+    const savedDonations = JSON.parse(
+        localStorage.getItem("donations") || "[]"
+    );
+    const allDonations = [...restaurants, ...savedDonations];
 
-    const filteredRestaurants = restaurants.filter((restaurant) =>
+    const filteredRestaurants = allDonations.filter((restaurant) =>
         restaurant.name.toLowerCase().includes(search.toLowerCase()) ||
         restaurant.city.toLowerCase().includes(search.toLowerCase())
     );
