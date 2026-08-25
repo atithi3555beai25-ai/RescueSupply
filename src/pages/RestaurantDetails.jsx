@@ -1,20 +1,17 @@
 import { useParams, Link } from "react-router-dom";
-
 import restaurants from "../data/Restaurant";
 
 function RestaurantDetails() {
-
     const { id } = useParams();
 
     const restaurant = restaurants.find(
-        (item) => item.id === Number(id)
+        (item) => String(item.id) === String(id)
     );
 
     if (!restaurant) {
         return (
             <main className="page">
                 <h1>Restaurant Not Found</h1>
-
                 <Link to="/restaurants">
                     ← Go Back
                 </Link>
@@ -22,12 +19,8 @@ function RestaurantDetails() {
         );
     }
 
-    const mapLink =
-        `https://www.google.com/maps/dir/?api=1&destination=${restaurant.lat},${restaurant.lng}`;
-
     return (
         <main className="details-page">
-
             <div className="details-card">
 
                 {/* Food Icon */}
@@ -66,9 +59,17 @@ function RestaurantDetails() {
                         </div>
                     </div>
 
+                    <div className="info-item description-box">
+                        <span>📝</span>
+                        <div>
+                            <strong>About this Donation</strong>
+                            <p>{restaurant.description}</p>
+                        </div>
+                    </div>
+
                 </div>
 
-                {/* Map - moved up */}
+                {/* Restaurant Location */}
                 <h2 className="section-title">
                     📍 Restaurant Location
                 </h2>
@@ -76,30 +77,24 @@ function RestaurantDetails() {
                 <div className="map-container">
                     <iframe
                         title="Restaurant Location"
-                        src={`https://www.google.com/maps?q=${restaurant.lat},${restaurant.lng}&output=embed`}
+                        src={`https://www.google.com/maps?q=${encodeURIComponent(
+                            restaurant.address
+                        )}&output=embed`}
                         loading="lazy"
-                    >
-                    </iframe>
+                    ></iframe>
                 </div>
 
                 {/* Directions */}
                 <a
                     className="primary-btn"
-                    href={mapLink}
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                        restaurant.address
+                    )}`}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                 >
                     🧭 Get Directions
                 </a>
-
-                {/* Description */}
-                <div className="info-item description-box">
-                    <span>📝</span>
-                    <div>
-                        <strong>About this Donation</strong>
-                        <p>{restaurant.description}</p>
-                    </div>
-                </div>
 
                 {/* Pickup Information */}
                 <div className="pickup-info">
@@ -130,20 +125,17 @@ function RestaurantDetails() {
 
                 </div>
 
-                {/* Back */}
+                {/* Back Button */}
                 <div className="details-buttons">
-
                     <Link
                         className="back-btn"
                         to="/restaurants"
                     >
                         ← Back to Donations
                     </Link>
-
                 </div>
 
             </div>
-
         </main>
     );
 }
