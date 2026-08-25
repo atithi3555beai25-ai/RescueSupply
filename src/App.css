@@ -1524,64 +1524,108 @@ footer {
         font-size: 30px;
     }
 
-<<<<<<< HEAD
     .stats {
-        display: flex;
-        justify-content: center;
-        gap: 25px;
-        padding: 50px 7%;
-    }
+    display: flex;
+    justify-content: center;
+    gap: 25px;
 
-    .stat {
-        width: 220px;
-        padding: 30px 20px;
-        text-align: center;
-        background: #ffffff;
-        border: 1px solid #d9e2dc;
-        border-radius: 18px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: inherit;
-    }
-
-    .stat:hover {
-        transform: translateY(-8px);
-        border-color: #b8c9c0;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    /* Clicked / focused card */
-    .stat:focus {
-        outline: none;
-        background: #f2f8ff;
-        border: 1px solid #8bbce8;
-        box-shadow: 0 12px 30px rgba(74, 144, 226, 0.18);
-        transform: translateY(-5px);
-    }
-
-    .stat span {
-        font-size: 32px;
-    }
-
-    .stat h2 {
-        margin: 10px 0 5px;
-        font-size: 30px;
-        color: #26352b;
-    }
-
-    .stat p {
-        margin: 0;
-        color: #66736b;
-    }
-
-    .primary-btn,
-    .secondary-btn {
-        display: block;
-        margin: 10px auto;
-    }
+    padding: 50px 7%;
 }
 
+.stats {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 25px;
+    padding: 50px 7%;
+    background: #ffffff;
+}
+
+.stat {
+    width: 220px;
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: #ffffff;
+    border: 1px solid #d9e2dc;
+    border-radius: 18px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+
+    /* Smooth animation */
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+
+    font-family: inherit;
+}
+
+/* Hover animation */
+.stat:hover {
+    transform: translateY(-8px);
+    border-color: #b8c9c0;
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Clicked / focused card */
+.stat:focus {
+    outline: none;
+
+    background: #f2f8ff;
+    border: 2px solid #4a90e2;
+
+    box-shadow: 0 12px 30px rgba(74, 144, 226, 0.25);
+
+    transform: translateY(-5px);
+
+    /* Pointer remains clickable */
+    cursor: pointer;
+}
+
+/* Small animation when clicked */
+.stat:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+/* Emoji */
+.stat span {
+    display: block;
+    font-size: 32px;
+    margin-bottom: 8px;
+
+    transition: transform 0.3s ease;
+}
+
+/* Emoji animation on hover */
+.stat:hover span {
+    transform: scale(1.15) rotate(5deg);
+}
+
+/* Number */
+.stat h2 {
+    margin: 10px 0 5px;
+    font-size: 30px;
+    color: #26352b;
+}
+
+/* Description */
+.stat p {
+    margin: 0;
+    color: #66736b;
+}
+
+/* Buttons */
+.primary-btn,
+.secondary-btn {
+    display: block;
+    margin: 10px auto;
+}}
 @media (max-width: 650px) {
 
     .details-page {
@@ -1751,4 +1795,99 @@ footer {
 
 .back-home:hover {
     text-decoration: underline;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 25px;
+    padding: 50px 7%;
+    background: #ffffff;
+}
+
+.stat {
+    width: 220px;
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background: #ffffff;
+    border: 1px solid #d9e2dc;
+    border-radius: 18px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+
+    /* Smooth animation */
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+
+    font-family: inherit;
+}
+
+/* Hover animation */
+.stat:hover {
+    transform: translateY(-8px);
+    border-color: #b8c9c0;
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Clicked / focused card */
+.stat:focus {
+    outline: none;
+
+    background: #f2f8ff;
+    border: 2px solid #4a90e2;
+
+    box-shadow: 0 12px 30px rgba(74, 144, 226, 0.25);
+
+    transform: translateY(-5px);
+
+    /* Pointer remains clickable */
+    cursor: pointer;
+}
+
+/* Small animation when clicked */
+.stat:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+/* Emoji */
+.stat span {
+    display: block;
+    font-size: 32px;
+    margin-bottom: 8px;
+
+    transition: transform 0.3s ease;
+}
+
+/* Emoji animation on hover */
+.stat:hover span {
+    transform: scale(1.15) rotate(5deg);
+}
+
+/* Number */
+.stat h2 {
+    margin: 10px 0 5px;
+    font-size: 30px;
+    color: #26352b;
+}
+
+/* Description */
+.stat p {
+    margin: 0;
+    color: #66736b;
+}
+
+/* Buttons */
+.primary-btn,
+.secondary-btn {
+    display: block;
+    margin: 10px auto;
 }
