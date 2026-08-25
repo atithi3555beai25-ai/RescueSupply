@@ -109,7 +109,7 @@ function Login() {
             <div className="login-card">
 
                 <div className="login-icon">
-                    {isSignup ? "🌱" : "🔐"}
+                     👤
                 </div>
 
                 <h1>
