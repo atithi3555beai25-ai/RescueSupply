@@ -4,53 +4,38 @@ function Home() {
     return (
         <main>
 
-            {/* Hero Section */}
             <section className="hero">
 
-                <div className="hero-content">
+    <div className="hero-content">
 
-                    <span className="hero-tag">
-                        🌱 CONNECTING SURPLUS WITH COMMUNITIES
-                    </span>
+        <span className="hero-tag">
+            🌱 CONNECTING SURPLUS WITH COMMUNITIES
+        </span>
 
-                    <h1>
-                        Good Food Should
-                        <span> Never Go to Waste.</span>
-                    </h1>
+        <h1>
+            Good Food Should
+            <span> Never Go to Waste.</span>
+        </h1>
 
-                    <p>
-                        FoodShare connects restaurants and people with
-                        surplus food to reduce waste and help communities.
-                    </p>
+        <p>
+            FoodShare connects restaurants and people with
+            surplus food to reduce waste and help communities.
+        </p>
 
-                    <div className="hero-buttons">
-                        <Link to="/restaurants" className="primary-btn">
-                            Explore Nearby Food →
-                        </Link>
+        <div className="hero-buttons">
+            <Link to="/restaurants" className="primary-btn">
+                Explore Nearby Food →
+            </Link>
 
-                        <Link to="/add-donation" className="secondary-btn">
-                            Donate Surplus Food →
-                        </Link>
-                    </div>
+            <Link to="/add-donation" className="secondary-btn">
+                Donate Surplus Food →
+            </Link>
+        </div>
 
-                </div>
-
-                <div className="hero-food">
-
-    <div className="food-circle">
     </div>
 
-    <div className="floating-card">
-        <strong>120+</strong>
-        <span>Meals Shared</span>
-    </div>
+</section>
 
-</div>
-
-            </section>
-         
-
-           
             
             {/* Statistics */}
 <section className="stats">
