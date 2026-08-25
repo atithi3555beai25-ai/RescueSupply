@@ -3,23 +3,15 @@ import restaurants from "../data/Restaurant";
 
 function RestaurantDetails() {
     const { id } = useParams();
-
-    // Get donations added by the user
     const savedDonations = JSON.parse(
         localStorage.getItem("donations") || "[]"
     );
-
-    // First check newly added donations
     const savedDonation = savedDonations.find(
         (item) => String(item.id) === String(id)
     );
-
-    // If not found, check original restaurant data
     const originalRestaurant = restaurants.find(
         (item) => String(item.id) === String(id)
     );
-
-    // Use saved donation if available, otherwise original restaurant
     const restaurant = savedDonation || originalRestaurant;
 
     if (!restaurant) {
@@ -50,31 +42,23 @@ function RestaurantDetails() {
                     />
                 </div>
 
-                {/* Food Icon */}
-                <div className="big-food-icon">
-                    🍛
-                </div>
-
-                {/* Restaurant Information */}
                 <h1>{restaurant.name}</h1>
 
                 <p className="location">
                     📍 {restaurant.city}
                 </p>
 
-                {/* Donation Status */}
+        
                 {restaurant.donationStatus && (
                     <div className="status-badge">
                         🟢 {restaurant.donationStatus}
                     </div>
                 )}
 
-                {/* Meals */}
                 <div className="meals-badge">
                     🍱 {restaurant.meals} Meals Available
                 </div>
 
-                {/* Food Information */}
                 <div className="info-section">
 
                     <div className="info-item">
@@ -90,7 +74,7 @@ function RestaurantDetails() {
                         </div>
                     </div>
 
-                    {/* Food Category */}
+    
                     {restaurant.category && (
                         <div className="info-item">
                             <span>📦</span>
@@ -105,7 +89,6 @@ function RestaurantDetails() {
                         </div>
                     )}
 
-                    {/* Address */}
                     <div className="info-item">
                         <span>📍</span>
 
@@ -118,7 +101,7 @@ function RestaurantDetails() {
                         </div>
                     </div>
 
-                    {/* Description */}
+            
                     <div className="info-item description-box">
                         <span>📝</span>
 
@@ -135,7 +118,6 @@ function RestaurantDetails() {
 
                 </div>
 
-                {/* Restaurant Location */}
                 <h2 className="section-title">
                     📍 Restaurant Location
                 </h2>
@@ -150,7 +132,6 @@ function RestaurantDetails() {
                     ></iframe>
                 </div>
 
-                {/* Directions */}
                 <a
                     className="primary-btn"
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -162,7 +143,7 @@ function RestaurantDetails() {
                     🧭 Get Directions
                 </a>
 
-                {/* Pickup Information */}
+            
                 <div className="pickup-info">
 
                     <h2>
@@ -210,8 +191,6 @@ function RestaurantDetails() {
                     </div>
 
                 </div>
-
-                {/* Restaurant Coordinates */}
                 {restaurant.lat && restaurant.lng && (
                     <div className="coordinates-info">
 
@@ -230,7 +209,6 @@ function RestaurantDetails() {
                     </div>
                 )}
 
-                {/* Back Button */}
                 <div className="details-buttons">
 
                     <Link

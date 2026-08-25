@@ -1180,22 +1180,6 @@ select {
     font-family: "Playfair Display", serif;
 }
 
-.big-food-icon {
-    width: 90px;
-    height: 90px;
-
-    margin: 0 auto 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #ddf3e3;
-
-    border-radius: 50%;
-
-    font-size: 48px;
-}
 
 .location {
     color: #6c7770;

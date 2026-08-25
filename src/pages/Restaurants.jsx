@@ -24,7 +24,7 @@ function Restaurants() {
                 Find surplus food available near you.
             </p>
 
-            {/* Search Bar */}
+
             <div className="search-box">
 
                 <input
@@ -40,7 +40,7 @@ function Restaurants() {
 
             </div>
 
-            {/* Restaurant Cards */}
+       
             <div className="restaurant-grid">
 
                 {filteredRestaurants.length > 0 ? (
