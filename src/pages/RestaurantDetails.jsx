@@ -4,14 +4,29 @@ import restaurants from "../data/Restaurant";
 function RestaurantDetails() {
     const { id } = useParams();
 
-    const restaurant = restaurants.find(
+    // Get donations added by the user
+    const savedDonations = JSON.parse(
+        localStorage.getItem("donations") || "[]"
+    );
+
+    // First check newly added donations
+    const savedDonation = savedDonations.find(
         (item) => String(item.id) === String(id)
     );
+
+    // If not found, check original restaurant data
+    const originalRestaurant = restaurants.find(
+        (item) => String(item.id) === String(id)
+    );
+
+    // Use saved donation if available, otherwise original restaurant
+    const restaurant = savedDonation || originalRestaurant;
 
     if (!restaurant) {
         return (
             <main className="page">
                 <h1>Restaurant Not Found</h1>
+
                 <Link to="/restaurants">
                     ← Go Back
                 </Link>
@@ -21,7 +36,19 @@ function RestaurantDetails() {
 
     return (
         <main className="details-page">
+
             <div className="details-card">
+
+                {/* Restaurant Image */}
+                <div className="details-image">
+                    <img
+                        src={
+                            restaurant.image ||
+                            "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+                        }
+                        alt={restaurant.name}
+                    />
+                </div>
 
                 {/* Food Icon */}
                 <div className="big-food-icon">
@@ -35,6 +62,13 @@ function RestaurantDetails() {
                     📍 {restaurant.city}
                 </p>
 
+                {/* Donation Status */}
+                {restaurant.donationStatus && (
+                    <div className="status-badge">
+                        🟢 {restaurant.donationStatus}
+                    </div>
+                )}
+
                 {/* Meals */}
                 <div className="meals-badge">
                     🍱 {restaurant.meals} Meals Available
@@ -45,25 +79,57 @@ function RestaurantDetails() {
 
                     <div className="info-item">
                         <span>🍽️</span>
+
                         <div>
                             <strong>Food Available</strong>
-                            <p>{restaurant.food}</p>
+
+                            <p>
+                                {restaurant.food ||
+                                    "Food information not available"}
+                            </p>
                         </div>
                     </div>
 
+                    {/* Food Category */}
+                    {restaurant.category && (
+                        <div className="info-item">
+                            <span>📦</span>
+
+                            <div>
+                                <strong>Food Category</strong>
+
+                                <p>
+                                    {restaurant.category}
+                                </p>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Address */}
                     <div className="info-item">
                         <span>📍</span>
+
                         <div>
                             <strong>Address</strong>
-                            <p>{restaurant.address}</p>
+
+                            <p>
+                                {restaurant.address}
+                            </p>
                         </div>
                     </div>
 
+                    {/* Description */}
                     <div className="info-item description-box">
                         <span>📝</span>
+
                         <div>
-                            <strong>About this Donation</strong>
-                            <p>{restaurant.description}</p>
+                            <strong>
+                                About this Donation
+                            </strong>
+
+                            <p>
+                                {restaurant.description}
+                            </p>
                         </div>
                     </div>
 
@@ -99,43 +165,85 @@ function RestaurantDetails() {
                 {/* Pickup Information */}
                 <div className="pickup-info">
 
-                    <h2>🚚 Pickup Information</h2>
+                    <h2>
+                        🚚 Pickup Information
+                    </h2>
 
                     <div className="pickup-grid">
 
                         <div>
                             <span>⏰</span>
-                            <strong>Pickup Time</strong>
-                            <p>Available Today</p>
+
+                            <strong>
+                                Pickup Time
+                            </strong>
+
+                            <p>
+                                Available Today
+                            </p>
                         </div>
 
                         <div>
                             <span>👥</span>
-                            <strong>Meals</strong>
-                            <p>{restaurant.meals} People</p>
+
+                            <strong>
+                                Meals
+                            </strong>
+
+                            <p>
+                                {restaurant.meals} People
+                            </p>
                         </div>
 
                         <div>
                             <span>📍</span>
-                            <strong>Location</strong>
-                            <p>{restaurant.city}</p>
+
+                            <strong>
+                                Location
+                            </strong>
+
+                            <p>
+                                {restaurant.city}
+                            </p>
                         </div>
 
                     </div>
 
                 </div>
 
+                {/* Restaurant Coordinates */}
+                {restaurant.lat && restaurant.lng && (
+                    <div className="coordinates-info">
+
+                        <h2>
+                            🗺️ Location Coordinates
+                        </h2>
+
+                        <p>
+                            Latitude: {restaurant.lat}
+                        </p>
+
+                        <p>
+                            Longitude: {restaurant.lng}
+                        </p>
+
+                    </div>
+                )}
+
                 {/* Back Button */}
                 <div className="details-buttons">
+
                     <Link
                         className="back-btn"
                         to="/restaurants"
                     >
                         ← Back to Donations
                     </Link>
+
                 </div>
 
             </div>
+
         </main>
     );
 }
