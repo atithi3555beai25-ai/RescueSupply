@@ -50,8 +50,10 @@ function Home() {
             </section>
          
 
+           
+            
             {/* Statistics */}
-            <section className="stats">
+<section className="stats">
 
     <button className="stat">
         <span>🍽️</span>
@@ -78,54 +80,6 @@ function Home() {
     </button>
 
 </section>
-
-            
-            {/* About Section */}
-            <section className="about">
-
-                <div className="about-image">
-                </div>
-
-                <div className="about-content">
-
-                    <span className="section-tag">
-                        ABOUT FOODSHARE
-                    </span>
-
-                    <h2>
-                        Turning Surplus Food
-                        Into <span>Something Meaningful.</span>
-                    </h2>
-
-                    <p>
-                        Every day, perfectly good food goes unused.
-                        FoodShare provides a simple way for restaurants
-                        to share their extra food with people who can
-                        benefit from it.
-                    </p>
-
-                    <div className="about-points">
-
-                        <div>
-                            <span>✓</span>
-                            <p>Reduce unnecessary food waste</p>
-                        </div>
-
-                        <div>
-                            <span>✓</span>
-                            <p>Help local communities</p>
-                        </div>
-
-                        <div>
-                            <span>✓</span>
-                            <p>Make food sharing simple</p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
 
                {/* How It Works */}
 <section className="how-it-works">
