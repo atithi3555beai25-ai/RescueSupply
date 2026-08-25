@@ -11,9 +11,7 @@ body {
     line-height: 1.6;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+
 
 .navbar {
     display: flex;
@@ -356,9 +354,7 @@ body {
     color: #46534a;
 }
 
-/* =========================
-   CTA
-========================= */
+
 
 .cta {
     margin: 50px 7%;
@@ -410,9 +406,6 @@ body {
     background-color: #edf6ef;
 }
 
-/* =========================
-   HOW IT WORKS
-========================= */
 
 .how-it-works {
     padding: 100px 7%;
@@ -532,9 +525,6 @@ body {
     background: #cbd8cf;
 }
 
-/* =========================
-   SEARCH
-========================= */
 
 .search-box {
     display: flex;
@@ -569,9 +559,7 @@ body {
     cursor: pointer;
 }
 
-/* =========================
-   RESTAURANT GRID
-========================= */
+
 
 .restaurant-grid {
     display: grid;
@@ -626,9 +614,6 @@ body {
     margin: 12px 0 15px;
 }
 
-/* =========================
-   PAGE
-========================= */
 
 .page {
     padding: 60px 8%;
@@ -636,7 +621,6 @@ body {
 }
 
 .page h1 {
-<<<<<<< HEAD
     text-align: center;
     margin-bottom: 10px;
 }
@@ -646,9 +630,7 @@ body {
     margin-bottom: 30px;
 }
 
-/* =========================
-   DETAILS PAGE
-========================= */
+
 
 .details-page {
     padding: 40px 8%;
@@ -663,219 +645,16 @@ body {
     padding: 35px;
     border-radius: 15px;
     box-shadow: 0 6px 22px rgba(38, 115, 77, 0.12);
-=======
->>>>>>> origin/yukta
     text-align: center;
     margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
-.details-card h1 {
-    margin-bottom: 8px;
-    color: #174d30;
-}
-
-.big-food-icon {
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ddf3e3;
-    border-radius: 50%;
-    font-size: 48px;
-}
-
-.location {
-    color: #6c7770;
-    font-size: 16px;
-}
-
-.meals-badge {
-    display: inline-block;
-    margin: 20px 0;
-    padding: 10px 18px;
-    border-radius: 25px;
-    background: #176b3a;
-    color: white;
-    font-weight: bold;
-}
-
-/* =========================
-   INFORMATION
-========================= */
-
-.info-section {
-    margin-top: 20px;
-    text-align: left;
-}
-
-.info-item {
-    display: flex;
-    gap: 15px;
-    padding: 18px;
-    margin-bottom: 12px;
-    background: #f8fbf9;
-    border-radius: 12px;
-    border-left: 4px solid #176b3a;
-}
-
-.info-item > span {
-    font-size: 25px;
-}
-
-.info-item strong {
-    color: #174d30;
-}
-
-.info-item p {
-    margin: 5px 0 0;
-    color: #68736c;
-}
-
-/* =========================
-   PICKUP
-========================= */
-
-.pickup-info {
-    margin-top: 30px;
-    padding: 25px;
-    background: #eef8f1;
-    border-radius: 15px;
-}
-
-.pickup-info h2 {
-    color: #176b3a;
-    margin-bottom: 20px;
-}
-
-.pickup-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.pickup-grid div {
-    padding: 15px;
-    background: white;
-    border-radius: 10px;
-}
-
-.pickup-grid span {
-    display: block;
-    font-size: 25px;
-    margin-bottom: 8px;
-}
-
-.pickup-grid strong {
-    display: block;
-    color: #174d30;
-}
-
-.pickup-grid p {
-    margin: 5px 0 0;
-    color: #777;
-    font-size: 14px;
-}
-
-/* =========================
-   MAP
-========================= */
-
-.section-title {
-    margin: 35px 0 15px;
-    color: #174d30;
-    text-align: left;
-}
-
-.map-container {
-    width: 100%;
-    height: 320px;
-    overflow: hidden;
-    border-radius: 15px;
-    margin-bottom: 25px;
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-/* =========================
-   DETAILS BUTTONS
-========================= */
-
-.details-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.details-buttons .primary-btn,
-.details-buttons .back-btn {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-    text-decoration: none;
-}
-
-/* =========================
-   DONATION FORM
-========================= */
-
-.donation-form {
-    max-width: 600px;
-    margin: 30px auto;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-}
-
-.donation-form label {
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.donation-form input {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    font-size: 16px;
-}
-
-.donation-form button {
-    margin-top: 25px;
-    padding: 13px;
-    background: #26734d;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.donation-form button:hover {
-    background: #1d5c3d;
-}
-
-.success {
-    text-align: center;
-=======
 .subtitle {
     text-align: center;
     margin-bottom: 30px;
 }
 
-/* =========================
-   DETAILS PAGE
-========================= */
+
 
 .details-page {
     padding: 40px 8%;
@@ -925,9 +704,7 @@ body {
     font-weight: bold;
 }
 
-/* =========================
-   INFORMATION
-========================= */
+
 
 .info-section {
     margin-top: 20px;
@@ -957,9 +734,6 @@ body {
     color: #68736c;
 }
 
-/* =========================
-   PICKUP
-========================= */
 
 .pickup-info {
     margin-top: 30px;
@@ -1002,9 +776,7 @@ body {
     font-size: 14px;
 }
 
-/* =========================
-   MAP
-========================= */
+
 
 .section-title {
     margin: 35px 0 15px;
@@ -1026,9 +798,7 @@ body {
     border: 0;
 }
 
-/* =========================
-   DETAILS BUTTONS
-========================= */
+
 
 .details-buttons {
     display: flex;
@@ -1045,9 +815,6 @@ body {
     text-decoration: none;
 }
 
-/* =========================
-   DONATION FORM
-========================= */
 
 .donation-form {
     max-width: 600px;
@@ -1090,14 +857,10 @@ body {
 
 .success {
     text-align: center;
->>>>>>> origin/yukta
     color: #26734d;
     font-weight: bold;
 }
 
-/* =========================
-   404
-========================= */
 
 .not-found {
     min-height: 80vh;
@@ -1113,9 +876,6 @@ body {
     color: #26734d;
 }
 
-/* =========================
-   FOOTER
-========================= */
 
 footer {
     text-align: center;
@@ -1124,13 +884,6 @@ footer {
     color: white;
 }
 
-/* =========================
-<<<<<<< HEAD
-<<<<<<< HEAD
-   RESPONSIVE
-=======
-   HERO SECTION
-========================= */
 
 .hero {
     min-height: 500px;
@@ -1222,7 +975,7 @@ footer {
 }
 
 
-/* Hero food */
+
 
 .hero-food {
     position: relative;
@@ -1274,9 +1027,7 @@ footer {
 }
 
 
-/* =========================
-   STATS
-========================= */
+
 
 .stats {
     display: grid;
@@ -1315,9 +1066,6 @@ footer {
 }
 
 
-/* =========================
-   ABOUT
-========================= */
 
 .about {
     padding: 80px 7%;
@@ -1438,9 +1186,7 @@ footer {
 }
 
 
-/* =========================
-   ADD DONATION PAGE
-========================= */
+
 
 .page.donation-page {
     font-family: "Segoe UI", sans-serif !important;
@@ -1611,13 +1357,7 @@ footer {
 }
 
 
-/* =========================
-   RESPONSIVE DESIGN
->>>>>>> origin/vaishnavi
-=======
-   RESPONSIVE
->>>>>>> origin/yukta
-========================= */
+
 
 @media (max-width: 900px) {
 
@@ -1726,12 +1466,10 @@ footer {
         font-size: 90px;
     }
 
-<<<<<<< HEAD
-=======
+
     .floating-card {
         right: -15px;
     }
->>>>>>> origin/yukta
 
     .stats {
         grid-template-columns: 1fr 1fr;
@@ -1837,8 +1575,6 @@ footer {
         color: #66736b;
     }
 
-=======
->>>>>>> origin/yukta
     .primary-btn,
     .secondary-btn {
         display: block;
@@ -1869,13 +1605,8 @@ footer {
     .details-card h1 {
         font-size: 27px;
     }
-<<<<<<< HEAD
-=======
 }
 
-/* =========================
-   LOGIN / SIGN UP
-========================= */
 
 .login-page {
     min-height: 80vh;
@@ -2020,5 +1751,4 @@ footer {
 
 .back-home:hover {
     text-decoration: underline;
->>>>>>> origin/yukta
 }
