@@ -8,6 +8,7 @@ import Restaurants from "./pages/Restaurants";
 import RestaurantDetails from "./pages/RestaurantDetails";
 import AddDonation from "./pages/AddDonation";
 import NotFound from "./pages/NotFound";
+import Login from "./Login";
 
 import "./App.css";
 
@@ -32,6 +33,11 @@ function App() {
                 <Route
                     path="/add-donation"
                     element={<AddDonation />}
+                />
+
+                <Route
+                    path="/login"
+                    element={<Login />}
                 />
 
                 <Route
