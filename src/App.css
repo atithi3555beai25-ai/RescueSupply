@@ -19,9 +19,6 @@ body {
     line-height: 1.6;
 }
 
-a {
-    text-decoration: none;
-}
 
 button,
 input,
@@ -37,9 +34,9 @@ select {
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
 
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
 
 .navbar {
     width: 100%;
@@ -58,11 +55,22 @@ select {
     -webkit-backdrop-filter: blur(14px);
 
     box-shadow: 0 4px 20px rgba(35, 60, 43, 0.05);
+    height: 76px;
+    background: #fffdf8;
+    border-bottom: 1px solid #e8e4da;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: "DM Sans", sans-serif;
+    box-shadow: 0 2px 12px rgba(38, 53, 43, 0.04);
 }
 
 .navbar-container {
     width: 100%;
     max-width: 1250px;
+
     margin: auto;
 
     padding: 0 28px;
@@ -148,6 +156,105 @@ select {
    NAVIGATION
 ========================================================= */
 
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar .nav-item {
+    position: relative;
+
+    padding: 10px 15px;
+
+    color: #536057;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: color 0.25s ease;
+}
+
+.navbar .nav-item:hover {
+    color: #3f7942;
+}
+
+.navbar .nav-item.active {
+    color: #3f7942;
+}
+
+.navbar .nav-item.active::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+
+    width: 22px;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    background: #4c8a4d;
+    border-radius: 10px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logo-circle {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e5f2e6;
+    border: 1px solid #d4e7d4;
+    font-size: 21px;
+    transition: all 0.3s ease;
+}
+
+.logo:hover .logo-circle {
+    transform: rotate(-8deg) scale(1.05);
+    background: #d9ebda;
+}
+
+/* RescueSupply - highlighted */
+.logo-name {
+    display: flex;
+    align-items: center;
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+    color: #176b3a;
+}
+
+.logo-name span,
+.logo-name strong {
+    font-weight: 800;
+}
+
+.logo-name strong {
+    color: #176b3a;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
 .nav-links {
     display: flex;
     align-items: center;
@@ -166,14 +273,96 @@ select {
 
     border-radius: 8px;
 
+    padding: 10px 15px;
+    color: #536057;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 7px;
     transition:
         color 0.25s ease,
         background 0.25s ease;
 }
 
 .nav-item:hover {
+
     color: #3f7942;
     background: #f1f7ef;
+    color: #176b3a;
+    background: #f1f7f1;
+}
+
+.nav-item.active {
+    color: #176b3a;
+    background: #f1f7f1;
+}
+
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+    width: 22px;
+    height: 2px;
+    transform: translateX(-50%);
+    background: #176b3a;
+    border-radius: 10px;
+}
+
+/* =========================
+   DONATE BUTTON
+========================= */
+
+.donate-link {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 18px;
+    color: white;
+    background: #176b3a;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(23, 107, 58, 0.18);
+    transition: all 0.25s ease;
+}
+
+.donate-link span {
+    font-size: 18px;
+    line-height: 0;
+}
+
+.donate-link:hover {
+    background: #0f572d;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 17px rgba(23, 107, 58, 0.25);
+}
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-link {
+    margin-left: 4px;
+    padding: 10px 17px;
+    color: #3f4e43;
+    background: #fffdf9;
+    border: 1px solid #d8d8ce;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.login-link:hover {
+    color: #176b3a;
+    border-color: #9fbea3;
+    background: #f3f8f3;
+    transform: translateY(-1px);
 }
 
 .nav-item.active {
@@ -1015,6 +1204,11 @@ select {
 
 
 /* =========================================================
+=======
+}
+
+/* =========================
+>>>>>>> 1267647 (Updated navbar styling and App CSS)
    RESTAURANTS
 ========================================================= */
 
@@ -1056,6 +1250,7 @@ select {
     border-radius: 15px;
 
     margin-bottom: 15px;
+    height:1000px;
 }
 
 .food-icon img {
@@ -1387,6 +1582,7 @@ select {
 
     padding: 75px 20px;
 
+    padding: clamp(40px, 8vw, 80px) 20px;
     background:
         linear-gradient(
             120deg,
@@ -1394,7 +1590,6 @@ select {
             rgba(233, 247, 237, 0.78)
         ),
         url("https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=2200&q=85");
-
     background-size: cover;
 
     background-position: center;
@@ -1690,7 +1885,6 @@ select {
 
     font-family: "Playfair Display", serif;
 }
-
 
 /* =========================================================
    LOGIN
@@ -2258,7 +2452,6 @@ select {
 /* =========================
    FOOTER
 ========================= */
-
 .footer {
     margin-top: 0;
     background: #1d3025;
@@ -2355,7 +2548,28 @@ select {
 }
 
 .footer-logo:hover {
-    transform: rotate(-8deg) scale(1.05);
+    transform: rotate(-8deg) scale(1.05);}
+
+footer {
+    width: 100%;
+    padding: 30px 20px;
+    background: #183c28;
+    color: #ffffff;
+    text-align: center;
+    border-top: 4px solid #26734d;
+    font-family: "DM Sans", sans-serif;
+    box-shadow: 0 -4px 15px rgba(24, 60, 40, 0.08);
+}
+
+footer p {
+    margin: 0;
+    color: #dce9df;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+}
+
+footer p::first-letter {
+    color: #ffffff;
 }
 
 /* =========================
@@ -2413,6 +2627,28 @@ select {
 ========================================================= */
 
 @media (max-width: 900px) {
+    .navbar-container {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        gap: 3px;
+    }
+
+    .nav-item {
+        padding: 9px 11px;
+        font-size: 13px;
+    }
+
+    .donate-link {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .login-link {
+        padding: 9px 13px;
+        font-size: 13px;
+    }
 
     .navbar-container {
         padding: 0 20px;
@@ -2475,26 +2711,47 @@ select {
 }
 
 
-@media (max-width: 768px) {
 
+/* =========================
+   TABLET / MOBILE
+========================= */
+
+
+@media (max-width: 768px) {
     .navbar {
         min-height: auto;
-
+        height: auto;
         padding: 14px 0;
     }
 
     .navbar-container {
         flex-direction: column;
 
+
+
+
         gap: 14px;
     }
 
     .nav-links {
+
         gap: 5px;
+
+
+        width: 100%;
+        gap: 6px;
 
         flex-wrap: wrap;
 
         justify-content: center;
+    }
+
+    .donate-link {
+        margin-left: 0;
+    }
+
+    .login-link {
+        margin-left: 0;
     }
 
     .page {
@@ -2533,11 +2790,17 @@ select {
     .pickup-grid {
         grid-template-columns: 1fr;
     }
+
+    .logo-name {
+        font-size: 25px;
+    }
 }
 
 
-@media (max-width: 600px) {
 
+
+
+@media (max-width: 600px) {
     .hero {
         flex-direction: column;
 
@@ -2642,6 +2905,7 @@ select {
 }
 
 
+
 @media (max-width: 480px) {
 
     .logo-name {
@@ -2653,12 +2917,30 @@ select {
         height: 40px;
     }
 
+
+/* =========================
+   VERY SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
     .nav-links {
         width: 100%;
 
         flex-direction: column;
 
         text-align: center;
+        width: 100%;
+    }
+
+    .nav-item,
+    .login-link,
+    .donate-link {
+        width: auto;
+    }
+
+    .logo-name {
+        font-size: 23px;
     }
 
     .nav-item,
@@ -3102,4 +3384,16 @@ select {
     .info-item {
         gap: 10px;
     }
+
 }}
+
+
+    footer {
+        padding: 25px 15px;
+    }
+
+    footer p {
+        font-size: 13px;
+    }
+}
+
