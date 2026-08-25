@@ -397,16 +397,7 @@ select {
 
     gap: 60px;
 
-    background: radial-gradient(
-            circle at 85% 30%,
-            rgba(217, 239, 216, 0.8),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #f0f8f2,
-            #f9fbf6
-        );
+    background: transparent;
 }
 
 .hero-content {
