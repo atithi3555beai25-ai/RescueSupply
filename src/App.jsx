@@ -11,7 +11,7 @@ import NotFound from "./pages/NotFound";
 import Login from "./Login";
 
 import "./App.css";
-
+import Contact from "./pages/Contact";
 function App() {
     return (
         <>
@@ -39,6 +39,7 @@ function App() {
                     path="/login"
                     element={<Login />}
                 />
+                 <Route path="/contact" element={<Contact />} />
 
                 <Route
                     path="*"

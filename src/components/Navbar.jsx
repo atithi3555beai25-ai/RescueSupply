@@ -39,7 +39,12 @@ function Navbar() {
                     >
                         🍽️ Donations
                     </Link>
-
+                     <Link
+    to="/contact"
+    className="contact-link"
+>
+    Contact
+</Link>
                     <Link
                         to="/add-donation"
                         className="donate-link"
@@ -47,7 +52,7 @@ function Navbar() {
                         <span>＋</span>
                         Donate Food
                     </Link>
-
+                   
                     <Link
                         to="/login"
                         className={`login-link ${
@@ -56,7 +61,7 @@ function Navbar() {
                     >
                         👤 Login
                     </Link>
-
+                    
                 </div>
             </div>
         </nav>
