@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import restaurants from "../data/Restaurant";
 
 function AddDonation() {
     const navigate = useNavigate();
+
     const [form, setForm] = useState({
         donorName: "",
         foodName: "",
@@ -12,236 +14,72 @@ function AddDonation() {
     });
 
     const handleChange = (event) => {
+        const { name, value } = event.target;
+
         setForm({
             ...form,
-            [event.target.name]: event.target.value
+            [name]: value
         });
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        // Find selected restaurant
+        const selectedRestaurant = restaurants.find(
+            (restaurant) => restaurant.name === form.donorName
+        );
+
+        if (!selectedRestaurant) {
+            alert("Please select a restaurant.");
+            return;
+        }
+
         const savedDonations = JSON.parse(
             localStorage.getItem("donations") || "[]"
         );
 
+        // Save donation with restaurant details
         savedDonations.push({
             id: Date.now(),
-            name: form.donorName,
-            city: form.pickupLocation,
+
+            // Restaurant details
+            name: selectedRestaurant.name,
+            city: selectedRestaurant.city,
+            address: selectedRestaurant.address,
+            lat: selectedRestaurant.lat,
+            lng: selectedRestaurant.lng,
+            image: selectedRestaurant.image,
+
+            // Donation details
             meals: form.quantity,
             food: form.foodName,
-            description: `${form.foodCategory} donation available for pickup.`,
-            address: form.pickupLocation,
-            image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+            category: form.foodCategory,
+
+            description:
+                selectedRestaurant.description,
+
+            pickupLocation: selectedRestaurant.address,
+
+            donationStatus: "Available"
         });
 
-        localStorage.setItem("donations", JSON.stringify(savedDonations));
+        localStorage.setItem(
+            "donations",
+            JSON.stringify(savedDonations)
+        );
+
         navigate("/restaurants");
     };
 
     return (
         <main className="page donation-page">
-            <style>{`
-                .donation-page {
-                    position: relative;
-                    isolation: isolate;
-                    overflow: hidden;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    min-height: 80vh;
-                    padding: clamp(40px, 8vw, 80px) 20px;
-                    background:
-                        linear-gradient(120deg, rgba(247, 250, 247, 0.84), rgba(233, 247, 237, 0.7)),
-                        url("https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=2200&q=85"),
-                        repeating-linear-gradient(
-                            135deg,
-                            rgba(38, 115, 77, 0.045) 0,
-                            rgba(38, 115, 77, 0.045) 1px,
-                            transparent 1px,
-                            transparent 28px
-                        ),
-                        linear-gradient(135deg, #f7faf7 0%, #dff1e5 100%);
-                    background-size: cover, cover, auto, auto;
-                    background-position: center, center 42%;
-                    background-blend-mode: normal, normal, multiply, normal;
-                    animation: donation-page-in 0.6s ease both;
-                }
-
-                @keyframes donation-page-in {
-                    from { opacity: 0; transform: translateY(10px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-
-                .donation-page::before,
-                .donation-page::after {
-                    position: absolute;
-                    z-index: -1;
-                    content: "";
-                    pointer-events: none;
-                }
-
-                .donation-page::before {
-                    top: -18%;
-                    right: -8%;
-                    width: 52%;
-                    height: 70%;
-                    border: 1px solid rgba(38, 115, 77, 0.12);
-                    border-radius: 45% 55% 60% 40%;
-                    transform: rotate(18deg);
-                }
-
-                .donation-page::after {
-                    bottom: -24%;
-                    left: -12%;
-                    width: 48%;
-                    height: 62%;
-                    border: 1px solid rgba(196, 139, 61, 0.16);
-                    border-radius: 60% 40% 45% 55%;
-                    transform: rotate(-16deg);
-                }
-
-                .donation-page .page-header {
-                    position: relative;
-                    z-index: 1;
-                    width: 100%;
-                    max-width: 680px;
-                    text-align: center;
-                }
-
-                .donation-page .eyebrow {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                    margin-bottom: 14px;
-                    padding: 7px 13px;
-                    border: 1px solid rgba(38, 115, 77, 0.18);
-                    border-radius: 999px;
-                    background: rgba(255, 255, 255, 0.7);
-                    color: #26734d;
-                    font-size: 12px;
-                    font-weight: 700;
-                    letter-spacing: 1px;
-                    text-transform: uppercase;
-                }
-
-                .donation-page .eyebrow::before {
-                    width: 7px;
-                    height: 7px;
-                    border-radius: 50%;
-                    background: #c48b3d;
-                    content: "";
-                }
-
-                .donation-page h1 {
-                    font-size: clamp(32px, 5vw, 48px);
-                    line-height: 1.15;
-                    margin-bottom: 14px;
-                    text-shadow: 0 2px 12px rgba(255, 255, 255, 0.7);
-                }
-
-                .donation-page .subtitle {
-                    max-width: 560px;
-                    margin: 0 auto 32px;
-                    font-size: 17px;
-                }
-
-                .donation-page .donation-form {
-                    position: relative;
-                    z-index: 1;
-                    width: 100%;
-                    max-width: 720px;
-                    display: grid;
-                    grid-template-columns: repeat(2, minmax(0, 1fr));
-                    gap: 8px 20px;
-                    margin: 0;
-                    padding: clamp(24px, 5vw, 40px);
-                    border: 1px solid rgba(220, 235, 224, 0.9);
-                    border-radius: 16px;
-                    box-shadow: 0 16px 36px rgba(38, 80, 55, 0.18);
-                }
-
-                .donation-page .form-intro {
-                    grid-column: 1 / -1;
-                    margin-bottom: 4px;
-                    padding-bottom: 16px;
-                    border-bottom: 1px solid #e4eee6;
-                }
-
-                .donation-page .form-intro h2 {
-                    margin-bottom: 4px;
-                    color: #26352b;
-                    font-size: 21px;
-                }
-
-                .donation-page .form-intro p {
-                    color: #68736c;
-                    font-size: 14px;
-                }
-
-                .donation-page .donation-form label {
-                    margin-top: 8px;
-                    margin-bottom: 5px;
-                    color: #68736c;
-                    font-size: 14px;
-                }
-
-                .donation-page .donation-form input,
-                .donation-page .donation-form select {
-                    width: 100%;
-                    min-height: 48px;
-                    padding: 12px 14px;
-                    border: 1px solid #cbdccf;
-                    border-radius: 8px;
-                    outline: none;
-                    background: #fbfefb;
-                    color: #26352b;
-                    font: inherit;
-                    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-                }
-
-                .donation-page .donation-form input:focus,
-                .donation-page .donation-form select:focus {
-                    border-color: #26734d;
-                    box-shadow: 0 0 0 3px rgba(38, 115, 77, 0.14);
-                }
-
-                .donation-page .donation-form label:nth-of-type(5),
-                .donation-page .donation-form input:nth-of-type(3),
-                .donation-page .donation-form button {
-                    grid-column: 1 / -1;
-                }
-
-                .donation-page .donation-form button {
-                    min-height: 50px;
-                    margin-top: 18px;
-                    border-radius: 8px;
-                    font-weight: 700;
-                    letter-spacing: 0.2px;
-                    transition: background 0.2s ease, transform 0.2s ease;
-                }
-
-                .donation-page .donation-form button:hover {
-                    transform: translateY(-1px);
-                }
-
-                @media (max-width: 640px) {
-                    .donation-page .donation-form {
-                        grid-template-columns: 1fr;
-                        gap: 8px;
-                    }
-
-                    .donation-page .donation-form label:nth-of-type(5),
-                    .donation-page .donation-form input:nth-of-type(3),
-                    .donation-page .donation-form button {
-                        grid-column: 1 / -1;
-                    }
-                }
-            `}</style>
 
             <header className="page-header">
-                <span className="eyebrow">Make a difference</span>
+                <span className="eyebrow">
+                    Make a difference
+                </span>
+
                 <h1>Donate Food</h1>
 
                 <p className="subtitle">
@@ -250,26 +88,49 @@ function AddDonation() {
                 </p>
             </header>
 
-            <form className="donation-form" onSubmit={handleSubmit}>
+            <form
+                className="donation-form"
+                onSubmit={handleSubmit}
+            >
 
                 <div className="form-intro">
                     <h2>Donation details</h2>
-                    <p>Tell us about the food you would like to share.</p>
+
+                    <p>
+                        Select your restaurant and provide the food details.
+                    </p>
                 </div>
 
-                <label htmlFor="donor-name">Donor Name</label>
 
-                <input
-                    type="text"
+                <label htmlFor="donor-name">
+                    Donor Name
+                </label>
+
+                <select
                     id="donor-name"
                     name="donorName"
-                    placeholder="Enter your name"
                     value={form.donorName}
                     onChange={handleChange}
                     required
-                />
+                >
+                    <option value="" disabled>
+                        Select a restaurant
+                    </option>
 
-                <label htmlFor="food-name">Food Name</label>
+                    {restaurants.map((restaurant) => (
+                        <option
+                            key={restaurant.id}
+                            value={restaurant.name}
+                        >
+                            {restaurant.name}
+                        </option>
+                    ))}
+                </select>
+
+
+                <label htmlFor="food-name">
+                    Food Name
+                </label>
 
                 <input
                     type="text"
@@ -281,7 +142,12 @@ function AddDonation() {
                     required
                 />
 
-                <label htmlFor="food-category">Food Category</label>
+
+                {/* FOOD CATEGORY */}
+
+                <label htmlFor="food-category">
+                    Food Category
+                </label>
 
                 <select
                     id="food-category"
@@ -293,13 +159,30 @@ function AddDonation() {
                     <option value="" disabled>
                         Select a category
                     </option>
-                    <option value="prepared-meals">Prepared meals</option>
-                    <option value="bakery">Bakery</option>
-                    <option value="produce">Fresh produce</option>
-                    <option value="packaged-food">Packaged food</option>
+
+                    <option value="prepared-meals">
+                        Prepared meals
+                    </option>
+
+                    <option value="bakery">
+                        Bakery
+                    </option>
+
+                    <option value="produce">
+                        Fresh produce
+                    </option>
+
+                    <option value="packaged-food">
+                        Packaged food
+                    </option>
                 </select>
 
-                <label htmlFor="quantity">Quantity</label>
+
+                {/* QUANTITY */}
+
+                <label htmlFor="quantity">
+                    Quantity
+                </label>
 
                 <input
                     type="text"
@@ -307,18 +190,6 @@ function AddDonation() {
                     name="quantity"
                     placeholder="Example: 20 servings"
                     value={form.quantity}
-                    onChange={handleChange}
-                    required
-                />
-
-                <label htmlFor="pickup-location">Pickup Location</label>
-
-                <input
-                    type="text"
-                    id="pickup-location"
-                    name="pickupLocation"
-                    placeholder="Enter the pickup address"
-                    value={form.pickupLocation}
                     onChange={handleChange}
                     required
                 />
