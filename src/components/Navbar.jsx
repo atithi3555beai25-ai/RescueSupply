@@ -1,20 +1,63 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
+    const location = useLocation();
+
     return (
         <nav className="navbar">
-       
-<h2 className="brand">
-    <span className="brand-emoji">🍽</span>
-    <span className="brand-text">RescueSupply</span>
-</h2>
+            <div className="navbar-container">
 
+                {/* Logo */}
+                <Link to="/" className="logo">
+                    <div className="logo-circle">
+                        🍴
+                    </div>
 
-            <div className="nav-links">
-                <Link to="/">Home</Link>
-                <Link to="/restaurants">Donations</Link>
-                <Link to="/add-donation">Donate Food</Link>
-                <Link to="/login">Login</Link>
+                    <div className="logo-name">
+                        <span>Rescue</span>
+                        <strong>Supply</strong>
+                    </div>
+                </Link>
+
+                {/* Navigation */}
+                <div className="nav-links">
+
+                    <Link
+                        to="/"
+                        className={`nav-item ${
+                            location.pathname === "/" ? "active" : ""
+                        }`}
+                    >
+                        Home
+                    </Link>
+
+                    <Link
+                        to="/restaurants"
+                        className={`nav-item ${
+                            location.pathname === "/restaurants" ? "active" : ""
+                        }`}
+                    >
+                        🍽️ Donations
+                    </Link>
+
+                    <Link
+                        to="/add-donation"
+                        className="donate-link"
+                    >
+                        <span>＋</span>
+                        Donate Food
+                    </Link>
+
+                    <Link
+                        to="/login"
+                        className={`login-link ${
+                            location.pathname === "/login" ? "login-active" : ""
+                        }`}
+                    >
+                        👤 Login
+                    </Link>
+
+                </div>
             </div>
         </nav>
     );
