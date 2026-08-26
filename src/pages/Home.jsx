@@ -61,7 +61,7 @@ function Home() {
                 <div className="about-content">
 
                     <span className="section-tag">
-                        ABOUT FOODSHARE
+                        ABOUT RESCUESUPPLY
                     </span>
 
                     <h2>
