@@ -464,30 +464,6 @@ select {
     margin-right: 5%;
 }
 
-.food-circle {
-    width: 360px;
-    height: 360px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    overflow: hidden;
-
-    background-image: url("https://i.pinimg.com/1200x/3c/f2/fb/3cf2fbef29e0d56db68d72c556fea560.jpg");
-    background-image: url("https://i.pinimg.com/736x/eb/cb/c6/ebcbc6aaa9deca9d6efc1efc93b66945.jpg");
-
-    background-size: cover;
-    background-position: center;
-
-    border: 9px solid rgba(255, 255, 255, 0.75);
-
-    box-shadow:
-        0 25px 60px rgba(35, 70, 43, 0.18),
-        0 0 0 12px rgba(217, 239, 216, 0.45);
-}
 
 .floating-card {
     position: absolute;
