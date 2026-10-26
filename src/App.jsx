@@ -9,12 +9,14 @@ import RestaurantDetails from "./pages/RestaurantDetails";
 import AddDonation from "./pages/AddDonation";
 import NotFound from "./pages/NotFound";
 import Login from "./Login";
-
-import "./App.css";
 import Contact from "./pages/Contact";
+
+import { DonationProvider } from "./context/DonationContext";
+import "./App.css";
+
 function App() {
     return (
-        <>
+        <DonationProvider>
             <Navbar />
 
             <Routes>
@@ -39,7 +41,7 @@ function App() {
                     path="/login"
                     element={<Login />}
                 />
-                 <Route path="/contact" element={<Contact />} />
+                <Route path="/contact" element={<Contact />} />
 
                 <Route
                     path="*"
@@ -48,7 +50,7 @@ function App() {
             </Routes>
 
             <Footer />
-        </>
+        </DonationProvider>
     );
 }
 

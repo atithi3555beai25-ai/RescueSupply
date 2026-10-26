@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import restaurants from "../data/Restaurant";
+import { useDonations } from "../context/DonationContext";
 
 function AddDonation() {
     const navigate = useNavigate();
+    const { addDonation } = useDonations();
 
     const [form, setForm] = useState({
         donorName: "",
@@ -13,6 +15,9 @@ function AddDonation() {
         pickupLocation: ""
     });
 
+    const [errors, setErrors] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -20,10 +25,51 @@ function AddDonation() {
             ...form,
             [name]: value
         });
+
+        // Clear error as user types
+        if (errors[name]) {
+            setErrors({
+                ...errors,
+                [name]: ""
+            });
+        }
+    };
+
+    // Client-side validation strategy (Lectures 55-60)
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!form.donorName) {
+            newErrors.donorName = "Please select a partner restaurant.";
+        }
+
+        if (!form.foodName.trim()) {
+            newErrors.foodName = "Food item name is required.";
+        } else if (form.foodName.trim().length < 3) {
+            newErrors.foodName = "Food name must be at least 3 characters long.";
+        }
+
+        if (!form.foodCategory) {
+            newErrors.foodCategory = "Please select a food category.";
+        }
+
+        const qtyNum = parseInt(form.quantity, 10);
+        if (!form.quantity || isNaN(qtyNum) || qtyNum <= 0) {
+            newErrors.quantity = "Please enter a valid positive number of meals/servings.";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
+        setIsSubmitting(true);
 
         // Find selected restaurant
         const selectedRestaurant = restaurants.find(
@@ -31,43 +77,28 @@ function AddDonation() {
         );
 
         if (!selectedRestaurant) {
-            alert("Please select a restaurant.");
+            setErrors((prev) => ({
+                ...prev,
+                donorName: "Please select a valid partner restaurant."
+            }));
+            setIsSubmitting(false);
             return;
         }
 
-        const savedDonations = JSON.parse(
-            localStorage.getItem("donations") || "[]"
-        );
-
-        // Save donation with restaurant details
-        savedDonations.push({
-            id: Date.now(),
-
-            // Restaurant details
+        // Add donation via global Context API
+        addDonation({
             name: selectedRestaurant.name,
             city: selectedRestaurant.city,
             address: selectedRestaurant.address,
             lat: selectedRestaurant.lat,
             lng: selectedRestaurant.lng,
             image: selectedRestaurant.image,
-
-            // Donation details
-            meals: form.quantity,
-            food: form.foodName,
+            meals: parseInt(form.quantity, 10),
+            food: form.foodName.trim(),
             category: form.foodCategory,
-
-            description:
-                selectedRestaurant.description,
-
-            pickupLocation: selectedRestaurant.address,
-
-            donationStatus: "Available"
+            description: selectedRestaurant.description,
+            pickupLocation: selectedRestaurant.address
         });
-
-        localStorage.setItem(
-            "donations",
-            JSON.stringify(savedDonations)
-        );
 
         navigate("/restaurants");
     };
@@ -91,6 +122,7 @@ function AddDonation() {
             <form
                 className="donation-form"
                 onSubmit={handleSubmit}
+                noValidate
             >
 
                 <div className="form-intro">
@@ -102,6 +134,7 @@ function AddDonation() {
                 </div>
 
 
+                {/* DONOR NAME */}
                 <label htmlFor="donor-name">
                     Donor Name
                 </label>
@@ -111,6 +144,7 @@ function AddDonation() {
                     name="donorName"
                     value={form.donorName}
                     onChange={handleChange}
+                    className={errors.donorName ? "input-error" : ""}
                     required
                 >
                     <option value="" disabled>
@@ -122,12 +156,16 @@ function AddDonation() {
                             key={restaurant.id}
                             value={restaurant.name}
                         >
-                            {restaurant.name}
+                            {restaurant.name} ({restaurant.city})
                         </option>
                     ))}
                 </select>
+                {errors.donorName && (
+                    <span className="form-error-msg">{errors.donorName}</span>
+                )}
 
 
+                {/* FOOD NAME */}
                 <label htmlFor="food-name">
                     Food Name
                 </label>
@@ -139,12 +177,15 @@ function AddDonation() {
                     placeholder="Example: Vegetable rice"
                     value={form.foodName}
                     onChange={handleChange}
+                    className={errors.foodName ? "input-error" : ""}
                     required
                 />
+                {errors.foodName && (
+                    <span className="form-error-msg">{errors.foodName}</span>
+                )}
 
 
                 {/* FOOD CATEGORY */}
-
                 <label htmlFor="food-category">
                     Food Category
                 </label>
@@ -154,6 +195,7 @@ function AddDonation() {
                     name="foodCategory"
                     value={form.foodCategory}
                     onChange={handleChange}
+                    className={errors.foodCategory ? "input-error" : ""}
                     required
                 >
                     <option value="" disabled>
@@ -165,7 +207,7 @@ function AddDonation() {
                     </option>
 
                     <option value="bakery">
-                        Bakery
+                        Bakery & Breads
                     </option>
 
                     <option value="produce">
@@ -176,26 +218,33 @@ function AddDonation() {
                         Packaged food
                     </option>
                 </select>
+                {errors.foodCategory && (
+                    <span className="form-error-msg">{errors.foodCategory}</span>
+                )}
 
 
                 {/* QUANTITY */}
-
                 <label htmlFor="quantity">
-                    Quantity
+                    Quantity (Servings / Meals)
                 </label>
 
                 <input
-                    type="text"
+                    type="number"
                     id="quantity"
                     name="quantity"
-                    placeholder="Example: 20 servings"
+                    min="1"
+                    placeholder="Example: 20"
                     value={form.quantity}
                     onChange={handleChange}
+                    className={errors.quantity ? "input-error" : ""}
                     required
                 />
+                {errors.quantity && (
+                    <span className="form-error-msg">{errors.quantity}</span>
+                )}
 
-                <button type="submit">
-                    Donate Food
+                <button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Donate Food"}
                 </button>
 
             </form>

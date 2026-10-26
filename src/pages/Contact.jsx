@@ -1,6 +1,5 @@
-import React from "react";
-import Footer from "../components/Footer";
 import "../App.css";
+
 function Contact() {
     return (
         <div className="contact-page">

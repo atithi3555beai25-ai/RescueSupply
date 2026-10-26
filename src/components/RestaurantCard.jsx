@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 
 function RestaurantCard({ restaurant }) {
+    const isClaimed = Number(restaurant.meals) <= 0 || restaurant.donationStatus === "Claimed";
 
     return (
-        <div className="card">
+        <div className={`card ${isClaimed ? "card-claimed" : ""}`}>
 
             <div className="food-icon">
                 <img src={restaurant.image} alt={restaurant.food} />
@@ -15,7 +16,9 @@ function RestaurantCard({ restaurant }) {
 
             <p>🍽️ {restaurant.food}</p>
 
-            <h4>{restaurant.meals} meals available</h4>
+            <h4>
+                {isClaimed ? "✓ All meals claimed" : `${restaurant.meals} meals available`}
+            </h4>
 
             <Link
                 className="details-btn"

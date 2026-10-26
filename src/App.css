@@ -2,6 +2,7 @@
    RESET & GLOBAL
 ========================================================= */
 
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
 * {
     margin: 0;
     padding: 0;
@@ -34,7 +35,7 @@ select {
    FONTS
 ========================================================= */
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+
 
 
 /* =========================================================
@@ -3562,4 +3563,420 @@ select {
         gap: 8px;
         text-align: center;
     }
+}
+
+
+/* =========================================================
+   DONATION CONTEXT & SYLLABUS ENHANCEMENTS
+========================================================= */
+
+/* Toast Notification (Lectures 61-66) */
+.toast-notification {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    animation: toastSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 90vw;
+}
+
+@keyframes toastSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.toast-success {
+    background: #204e28;
+    color: #ffffff;
+    border: 1px solid #2d6b38;
+}
+
+.toast-error {
+    background: #842029;
+    color: #ffffff;
+    border: 1px solid #b02a37;
+}
+
+.toast-info {
+    background: #1c3d5a;
+    color: #ffffff;
+    border: 1px solid #2b5d88;
+}
+
+.toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.toast-message {
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Form Validation Styles (Lectures 55-60) */
+.form-error-msg {
+    color: #b91c1c;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: -10px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.input-error {
+    border-color: #ef4444 !important;
+    background-color: #fef2f2 !important;
+}
+
+/* Filter and Sort Toolbar (Lectures 61-66) */
+.filter-sort-toolbar {
+    max-width: 1200px;
+    margin: 20px auto 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding: 0 16px;
+}
+
+.category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-pill {
+    background: #ffffff;
+    border: 1px solid #d9d3c7;
+    color: #4b584e;
+    padding: 9px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.category-pill:hover {
+    background: #f1f6ef;
+    border-color: #4c8a4d;
+    color: #273b2b;
+}
+
+.category-pill.active {
+    background: #4c8a4d;
+    border-color: #4c8a4d;
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(76, 138, 77, 0.28);
+}
+
+.sort-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #3f5043;
+}
+
+.sort-select {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #d9d3c7;
+    background: #ffffff;
+    font-size: 14px;
+    color: #273b2b;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.sort-select:focus {
+    border-color: #4c8a4d;
+}
+
+/* Empty / No Results State */
+.no-results-box {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px dashed #cfd9ce;
+    margin: 20px 0;
+}
+
+.no-results-box p {
+    font-size: 16px;
+    color: #647568;
+    margin-bottom: 16px;
+}
+
+.reset-filter-btn {
+    background: #4c8a4d;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.reset-filter-btn:hover {
+    background: #396f3a;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 16px;
+    color: #4c8a4d;
+}
+
+/* Status Badges & Claimed Card styles */
+.badges-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 15px 0 20px;
+    flex-wrap: wrap;
+}
+
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+}
+
+.status-available {
+    background: #e6f6e8;
+    color: #1e6b2c;
+    border: 1px solid #c2e8c8;
+}
+
+.status-claimed {
+    background: #fbeae9;
+    color: #b91c1c;
+    border: 1px solid #f5c4c2;
+}
+
+.card-claimed {
+    opacity: 0.82;
+    filter: saturate(0.85);
+}
+
+/* Claim Surplus Food Box in Details */
+.claim-action-box {
+    margin: 24px 0 10px;
+}
+
+.claim-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #4c8a4d, #3c743d);
+    color: #ffffff;
+    padding: 15px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(76, 138, 77, 0.25);
+    transition: all 0.25s ease;
+}
+
+.claim-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #437d44, #326233);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(76, 138, 77, 0.32);
+}
+
+.claim-btn.disabled,
+.claim-btn:disabled {
+    background: #c3cfc4;
+    color: #5d6d60;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.delete-btn {
+    background: transparent;
+    color: #b91c1c;
+    border: 1px solid #f0b6b6;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: #fef2f2;
+    border-color: #b91c1c;
+}
+
+/* Interactive Modal (Lectures 61-66) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(23, 35, 26, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: #ffffff;
+    border-radius: 18px;
+    max-width: 480px;
+    width: 100%;
+    padding: 28px 30px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+    animation: modalScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScale {
+    from {
+        transform: scale(0.94);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.modal-header h2 {
+    font-size: 22px;
+    color: #273b2b;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #839185;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+}
+
+.modal-close:hover {
+    color: #273b2b;
+}
+
+.modal-subtitle {
+    font-size: 14px;
+    color: #556658;
+    margin-bottom: 22px;
+    line-height: 1.5;
+}
+
+.modal-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2c3e30;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+.modal-form input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #d4cdc2;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 18px;
+    outline: none;
+}
+
+.modal-form input:focus {
+    border-color: #4c8a4d;
+    box-shadow: 0 0 0 3px rgba(76, 138, 77, 0.15);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.modal-actions .btn-secondary {
+    background: #f1ede6;
+    color: #424e44;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.modal-actions .btn-primary {
+    background: #4c8a4d;
+    color: #ffffff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(76, 138, 77, 0.2);
+}
+
+.modal-actions .btn-primary:hover {
+    background: #3c743d;
 }
